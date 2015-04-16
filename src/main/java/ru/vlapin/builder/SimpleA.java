@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
  */
 public class SimpleA implements A {
 
-    private String requiredField, // Обязательное поле
-            optionalField; // Необяательное поле
+    private String requiredField,
+            optionalField;
 
     private SimpleA(String requiredField) {
         this.requiredField = requiredField;
