@@ -6,9 +6,9 @@ package ru.vlapin.builder;
  */
 public interface A {
 
-    String getRequiredField(); // ќб€зательное поле
+    String getRequiredField();
 
-    String getOptionalField(); // ќстальные пол€ - необ€ательные
+    String getOptionalField();
 
     interface Builder<T extends A, V extends A.Builder<T, V>> {
 

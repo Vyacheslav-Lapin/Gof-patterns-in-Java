@@ -6,9 +6,9 @@ package ru.vlapin.builder;
  */
 public interface B extends A {
 
-    String getChildrenRequiredField(); // ќб€зательное поле
+    String getChildrenRequiredField();
 
-    String getChildrenOptionalField(); // ќстальные пол€ - необ€ательные
+    String getChildrenOptionalField();
 
     interface Builder<T extends B, V extends Builder<T, V>> extends A.Builder<T, V> {
 
