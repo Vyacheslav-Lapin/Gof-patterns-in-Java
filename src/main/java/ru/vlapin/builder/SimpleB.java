@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Vyacheslav Lapin (http://vlapin.ru/)
- * @version 0.1 (15.04.2015 15:19).
+ * @version 0.1 (16.04.2015 11:00).
  */
 public class SimpleB implements B {
 

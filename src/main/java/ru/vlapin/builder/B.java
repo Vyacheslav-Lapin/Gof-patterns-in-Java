@@ -2,7 +2,7 @@ package ru.vlapin.builder;
 
 /**
  * @author Vyacheslav Lapin (http://vlapin.ru/)
- * @version 0.1 (15.04.2015 15:33).
+ * @version 0.1 (16.04.2015 10:33).
  */
 public interface B extends A {
 
