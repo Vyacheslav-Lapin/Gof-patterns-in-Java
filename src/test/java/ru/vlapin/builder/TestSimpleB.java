@@ -14,17 +14,17 @@ public class TestSimpleB {
     public void testGetBuilder() throws Exception {
 
         assertEquals(
-                "Мама мыла раму, но делала это, спустя рукава, да и вообще - халтурила!",
-                SimpleB.getBuilder("Мама мыла раму", "спустя рукава")
-                        .setOptionalField("но делала это")
-                        .setChildrenOptionalField("да и вообще - халтурила!")
+                "Quick, brown fox, jumps over, the lazy dog!",
+                SimpleB.getBuilder("Quick", "jumps over")
+                        .setOptionalField("brown fox")
+                        .setChildrenOptionalField("the lazy dog!")
                         .build().toString());
 
         assertEquals(
-                "Мама мыла раму, но делала это, спустя рукава, да и вообще - халтурила!",
-                SimpleB.getBuilder("Мама мыла раму", "спустя рукава")
-                        .setOptionalField("но делала это")
-                        .setChildrenOptionalField("да и вообще - халтурила!")
+                "Quick, brown fox, jumps over, the lazy dog!",
+                SimpleB.getBuilder("Quick", "jumps over")
+                        .setOptionalField("brown fox")
+                        .setChildrenOptionalField("the lazy dog!")
                         .build().toString());
     }
 }

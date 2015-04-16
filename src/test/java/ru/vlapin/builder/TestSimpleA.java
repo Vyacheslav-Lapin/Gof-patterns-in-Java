@@ -14,13 +14,13 @@ public class TestSimpleA {
     public void testGetBuilder() throws Exception {
 
         assertEquals(
-                "Мама мыла раму, хотя ей и не нравилось",
-                SimpleA.getBuilder("Мама мыла раму")
-                        .setOptionalField("хотя ей и не нравилось").build().toString());
+                "Quick brown fox, jumps over the lazy dog!",
+                SimpleA.getBuilder("Quick brown fox")
+                        .setOptionalField("jumps over the lazy dog!").build().toString());
 
         assertEquals(
-                "Мама мыла раму, хотя ей и не нравилось",
-                SimpleA.getBuilder("Мама мыла раму")
-                        .setOptionalField("хотя ей и не нравилось").build().toString());
+                "Quick brown fox, jumps over the lazy dog!",
+                SimpleA.getBuilder("Quick brown fox")
+                        .setOptionalField("jumps over the lazy dog!").build().toString());
     }
 }
