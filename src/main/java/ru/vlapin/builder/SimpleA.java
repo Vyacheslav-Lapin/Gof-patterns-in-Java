@@ -46,20 +46,17 @@ public class SimpleA implements A {
 
     private static Builder builder;
 
-    public static Builder getBuilder(SimpleA simpleA) {
+    public static Builder getBuilder(String requiredField){
         if (builder == null)
             builder = new Builder();
-        return builder.init(simpleA);
-    }
-
-    public static Builder getBuilder(String requiredField){
-        return getBuilder(new SimpleA(requiredField));
+        return builder.init(new SimpleA(requiredField));
     }
 
     protected String[] getFields() {
         return new String[]{getRequiredField(), getOptionalField()};
     }
 
+    @Override
     public String toString() {
         return Arrays.stream(getFields())
                 .filter(x -> x != null)

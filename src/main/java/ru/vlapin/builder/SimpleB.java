@@ -40,7 +40,7 @@ public class SimpleB implements B {
 
     public static class Builder implements B.Builder<SimpleB, Builder> {
 
-        private SimpleB b;
+        private SimpleB simpleB;
         private A.Builder superBuilder;
 
         private Builder() {
@@ -48,23 +48,23 @@ public class SimpleB implements B {
 
         private <T extends A, V extends A.Builder<T, V>> Builder init(A.Builder<T, V> superBuilder, SimpleB b) {
             this.superBuilder = superBuilder;
-            this.b = b;
+            this.simpleB = b;
             return this;
         }
 
         @Override
         public Builder setChildrenOptionalField(String childrenOptionalField){
-            b.childrenOptionalField = childrenOptionalField;
+            simpleB.childrenOptionalField = childrenOptionalField;
             return this;
         }
 
         @Override
         public SimpleB build() {
             try {
-                b._super = superBuilder.build();
-                return b;
+                simpleB._super = superBuilder.build();
+                return simpleB;
             } finally {
-                b = null;
+                simpleB = null;
             }
         }
 
@@ -77,14 +77,10 @@ public class SimpleB implements B {
 
     private static Builder builder;
 
-    public static Builder getBuilder(A.Builder aBuilder, SimpleB b){
+    public static Builder getBuilder(String requiredField, String childrenRequiredField) {
         if (builder == null)
             builder = new Builder();
-        return builder.init(aBuilder, b);
-    }
-
-    public static Builder getBuilder(String requiredField, String childrenRequiredField) {
-        return getBuilder(SimpleA.getBuilder(requiredField), new SimpleB(childrenRequiredField));
+        return builder.init(SimpleA.getBuilder(requiredField), new SimpleB(childrenRequiredField));
     }
 
     protected String[] getFields(){
@@ -92,6 +88,7 @@ public class SimpleB implements B {
                 getRequiredField(), getOptionalField(), getChildrenRequiredField(), getChildrenOptionalField()};
     }
 
+    @Override
     public String toString() {
         return Arrays.stream(getFields())
                 .filter(x -> x != null)
