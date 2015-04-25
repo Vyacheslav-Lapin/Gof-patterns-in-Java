@@ -13,32 +13,22 @@ public class AppTest {
     @Test
     public void testSimpleA() throws Exception {
 
-        assertEquals(
-                "Quick brown fox, jumps over the lazy dog!",
-                SimpleA.getBuilder("Quick brown fox")
-                        .setOptionalField("jumps over the lazy dog!").build().toString());
-
-        assertEquals(
-                "Quick brown fox, jumps over the lazy dog!",
-                SimpleA.getBuilder("Quick brown fox")
-                        .setOptionalField("jumps over the lazy dog!").build().toString());
+        for (int i = 0; i < 2; i++)
+            assertEquals(
+                    "Quick brown fox, jumps over the lazy dog!",
+                    SimpleA.getBuilder("Quick brown fox")
+                            .setOptionalField("jumps over the lazy dog!").build().toString());
     }
 
     @Test
     public void testSimpleB() throws Exception {
 
-        assertEquals(
-                "Quick, brown fox, jumps over, the lazy dog!",
-                SimpleB.getBuilder("Quick", "jumps over")
-                        .setOptionalField("brown fox")
-                        .setChildrenOptionalField("the lazy dog!")
-                        .build().toString());
-
-        assertEquals(
-                "Quick, brown fox, jumps over, the lazy dog!",
-                SimpleB.getBuilder("Quick", "jumps over")
-                        .setOptionalField("brown fox")
-                        .setChildrenOptionalField("the lazy dog!")
-                        .build().toString());
+        for (int i = 0; i < 2; i++)
+            assertEquals(
+                    "Quick, brown fox, jumps over, the lazy dog!",
+                    SimpleB.getBuilder("Quick", "jumps over")
+                            .setOptionalField("brown fox")
+                            .setChildrenOptionalField("the lazy dog!")
+                            .build().toString());
     }
 }
