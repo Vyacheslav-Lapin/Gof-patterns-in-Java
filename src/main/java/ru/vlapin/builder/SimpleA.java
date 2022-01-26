@@ -1,6 +1,7 @@
 package ru.vlapin.builder;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -9,67 +10,68 @@ import java.util.stream.Collectors;
  */
 public class SimpleA implements A {
 
-    private String requiredField,
-            optionalField;
+  private final String requiredField;
+  private String optionalField;
 
-    private SimpleA(String requiredField) {
-        this.requiredField = requiredField;
+  private SimpleA(String requiredField) {
+    this.requiredField = requiredField;
+  }
+
+  public static class Builder implements A.Builder<SimpleA, Builder> {
+
+    private SimpleA simpleA;
+
+    private Builder() {
     }
 
-    public static class Builder implements A.Builder<SimpleA, Builder> {
-
-        private SimpleA simpleA;
-
-        private Builder() {
-        }
-
-        private Builder init(SimpleA simpleA) {
-            this.simpleA = simpleA;
-            return this;
-        }
-
-        @Override
-        public SimpleA build() {
-            try {
-                return simpleA;
-            } finally {
-                simpleA = null;
-            }
-        }
-
-        @Override
-        public Builder setOptionalField(String optionalField) {
-            simpleA.optionalField = optionalField;
-            return this;
-        }
-    }
-
-    private static Builder builder;
-
-    public static Builder getBuilder(String requiredField){
-        if (builder == null)
-            builder = new Builder();
-        return builder.init(new SimpleA(requiredField));
-    }
-
-    protected String[] getFields() {
-        return new String[]{getRequiredField(), getOptionalField()};
+    private Builder init(SimpleA simpleA) {
+      this.simpleA = simpleA;
+      return this;
     }
 
     @Override
-    public String toString() {
-        return Arrays.stream(getFields())
-                .filter(x -> x != null)
-                .collect(Collectors.joining(", "));
+    public SimpleA build() {
+      try {
+        return simpleA;
+      }
+      finally {
+        simpleA = null;
+      }
     }
 
     @Override
-    public String getRequiredField() {
-        return requiredField;
+    public Builder setOptionalField(String optionalField) {
+      simpleA.optionalField = optionalField;
+      return this;
     }
+  }
 
-    @Override
-    public String getOptionalField() {
-        return optionalField;
-    }
+  private static Builder builder;
+
+  public static Builder getBuilder(String requiredField) {
+    if (builder == null)
+      builder = new Builder();
+    return builder.init(new SimpleA(requiredField));
+  }
+
+  protected String[] getFields() {
+    return new String[] {getRequiredField(), getOptionalField()};
+  }
+
+  @Override
+  public String toString() {
+    return Arrays.stream(getFields())
+        .filter(Objects::nonNull)
+        .collect(Collectors.joining(", "));
+  }
+
+  @Override
+  public String getRequiredField() {
+    return requiredField;
+  }
+
+  @Override
+  public String getOptionalField() {
+    return optionalField;
+  }
 }

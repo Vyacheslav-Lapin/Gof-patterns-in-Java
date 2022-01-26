@@ -1,0 +1,9 @@
+maven.compiler:
+  showWarnings: true
+  showDeprecation: true
+
+lombok:
+  verbose: true
+  addOutputDirectory: false
+  sourceDirectory: ${project.basedir}/src/main/java
+  testSourceDirectory: ${project.basedir}/src/test/java

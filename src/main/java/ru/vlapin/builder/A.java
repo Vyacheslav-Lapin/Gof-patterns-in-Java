@@ -6,14 +6,14 @@ package ru.vlapin.builder;
  */
 public interface A {
 
-    String getRequiredField();
+  String getRequiredField();
 
-    String getOptionalField();
+  String getOptionalField();
 
-    interface Builder<T extends A, V extends A.Builder<T, V>> {
+  interface Builder<T extends A, V extends A.Builder<T, V>> {
 
-        T build();
+    T build();
 
-        V setOptionalField(String optionalField);
-    }
+    V setOptionalField(String optionalField);
+  }
 }
